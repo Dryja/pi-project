@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Zaloguj się{% endblock %}
+
+{% block content %}
+  {% if error %}
+
+    <div class="notification is-danger">
+      Błędny login lub hasło. Spróbuj ponownie.
+    </div>
+  {% endif %}
+  <form method="post">
+    <div class="field">
+      <label class="label">Login</label>
+      <div class="control">
+        <input class="input" name="login" type="text" placeholder="Login">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Hasło</label>
+      <div class="control">
+        <input class="input" name="password" type="password" placeholder="Hasło">
+      </div>
+    </div>
+    <div class="control">
+      <button class="button is-primary">Zaloguj</button>
+    </div>
+  </form>
+{% endblock %}

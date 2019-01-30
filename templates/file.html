@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Dodaj plik{% endblock %}
+
+{% block content %}
+  <h2 class="title">Dodaj nowy plik</h2>
+  {% if files_len >= 5%}
+    <p>Nie możesz dodać więcej niż 5 plików!</p>
+  {% else %}
+    <p>Możesz dodać maksymalnie 5 plików. Stan limitu to
+      {{ files_len }}/5.
+    </p>
+    <form enctype="multipart/form-data" method="post" action="/dryjah/dl/storage">
+      <input type="hidden" name="jwt_token" value={{jwt}}>
+      <div class="field">
+        <label class="file-label">
+          <input class="file-input" type="file" name="file">
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Wybierz plik…
+            </span>
+          </span>
+        </label>
+      </div>
+      <div class="control">
+        <button class="button is-primary">Dodaj plik</button>
+      </div>
+    </form>
+  {% endif %}
+{% endblock %}

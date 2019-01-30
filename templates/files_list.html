@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Lista twoich plików
+
+{% endblock %}
+
+{% block content %}
+  <h1 class="title">Lista twoich plików:
+  </h1>
+  {% if files_len > 0 %}
+    <div class="columns is-variable is-8 is-multiline">
+      {% for file in files %}
+      <div class="column is-12-mobile is-4-tablet is-3-desktop ">
+        <div class="box">
+          <p class="subtitle">{{ file.1 }}</p>
+          <img src="static/nails/{{ file.0 }}.jpg" alt="Thumbnail" onerror="this.onerror=null;this.src='static/404.png';" />
+          <a class="button is-primary" href="/dryjah/dl/storage/{{file.0}}/{{jwt}}">Pobierz&nbsp;<i class="fas fa-arrow-alt-circle-down"></i></a>
+
+          {% if file.0 in shared_keys %}
+          
+          <a class="button is-link modal-open" href="#">Publiczny link&nbsp;<i class="fas fa-link"></i></a>
+          <div class="modal">
+              <div class="modal-background"></div>
+              <div class="modal-content">
+                <pre class="selectable">{{ request.host_url }}dryjah/dl/shared/{{file.0}}</pre>
+              </div>
+              <button class="modal-close is-large" aria-label="close"></button>
+            </div>
+          {% else %}
+          <a class="button is-link" href="/dryjah/dl/share/{{file.0}}/{{jwt}}">Udostępnij&nbsp;<i class="fas fa-share-alt"></i></a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  {% else %}
+    <p>Brak plików na twoim koncie.</p>
+  {% endif %}
+{% endblock %}

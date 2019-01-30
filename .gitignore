@@ -1,0 +1,12 @@
+settings.json
+tasks.json
+.sass-cache/
+application.log
+
+
+
+nails/*
+!nails/.gitkeep 
+
+uploads/*
+!uploads/.gitkeep 

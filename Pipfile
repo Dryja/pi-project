@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+flask-sslify = "*"
+redis = "*"
+flask-jwt = "*"
+uwsgi = "*"
+authlib = "*"
+pika = "*"
+wand = "*"
+
+[dev-packages]
+pylint = "<2.0.0"
+yapf = "*"
+
+[requires]
+python_version = "3.7"
